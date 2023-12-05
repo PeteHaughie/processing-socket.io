@@ -47,6 +47,16 @@ void setup() {
       println("Disconnected from server");
     }
   });
+  // "message" could be anything that you specify in your server app
+  socket.on("message", new Emitter.Listener() {
+    @Override
+    public void call(Object... args) {
+      String tmp = args[0] + "";
+      json = parseJSONObject(tmp);
+      println(json);
+    }
+  });
+
 }
 
 void draw() {
